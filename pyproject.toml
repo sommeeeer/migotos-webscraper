@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "migotos-scraping"
+version = "0.1.0"
+description = "A web scraper to scrape migotos.com wordpress site"
+authors = ["magnus <magnus@dahleide.com>"]
+readme = "README.md"
+packages = [{include = "migotos_scraping"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+selenium = "^4.12.0"
+SQLAlchemy = "^2.0.21"
+requests = "^2.31.0"
+bs4 = "^0.0.1"
+pillow = "^10.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
