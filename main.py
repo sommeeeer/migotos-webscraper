@@ -23,16 +23,16 @@ for cat_url in cat_urls:
     new_cat = get_cat_from_url(cat_url)
     session.add(new_cat)
     num_images = session.query(CatImage).filter_by(cat=new_cat).count()
-    special_print(f"Adding {new_cat.name} to database with {num_images} images")
+    special_print(f"Adding '{new_cat.name}' to database with {num_images} images")
 
 special_print(f"Committing cats to database...")
 session.commit()
 
-for litter_url in litter_urls:
+for litter_url in litter_urls[0:2]:
     special_print(f'Doing {litter_url["url"]}')
     new_litter = get_litter_from_url(litter_url["url"], litter_url["post_image"])
     session.add(new_litter)
-    special_print(f"Adding {new_litter.name} to database")
+    special_print(f"Adding '{new_litter.name}' to database")
 special_print(f"Commiting all litters to database...")
 session.commit()
 

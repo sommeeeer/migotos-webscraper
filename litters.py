@@ -14,6 +14,7 @@ from models import (
     LitterPictureWeek,
     KittenPictureImage,
     Kitten,
+    Tag,
 )
 
 ACCEPTED_WIDTH = ("200", "186", "197")
@@ -84,9 +85,10 @@ def get_litter_from_url(url, post_image):
     new_litter.born = parse_date(
         soup.find("p", class_="text-muted text-uppercase").text
     )
-    new_litter.tags = json.dumps(
-        (soup.find("span", class_="post-tags").text.replace(" ", "").split("•")[1:])
-    )
+    tags = soup.find("span", class_="post-tags").text.replace(" ", "").split("•")[1:]
+    for t in tags:
+        new_tag = Tag(value=t)
+        new_litter.tags.append(new_tag)
 
     try:
         new_litter.pedigreeurl = soup.find(
