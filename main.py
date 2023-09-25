@@ -19,6 +19,7 @@ session = Session()
 cat_urls = get_cat_urls()
 litter_urls = get_litter_urls()
 
+
 for cat_url in cat_urls:
     new_cat = get_cat_from_url(cat_url)
     session.add(new_cat)
@@ -28,7 +29,7 @@ for cat_url in cat_urls:
 special_print(f"Committing cats to database...")
 session.commit()
 
-for litter_url in litter_urls[0:2]:
+for litter_url in litter_urls:
     special_print(f'Doing {litter_url["url"]}')
     new_litter = get_litter_from_url(litter_url["url"], litter_url["post_image"])
     session.add(new_litter)

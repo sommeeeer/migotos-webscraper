@@ -34,7 +34,7 @@ def get_litter_urls():
         litter_posts.append(
             {
                 "url": url,
-                "post_image": post_image.split("/")[-1] if post_image else None,
+                "post_image": post_image if post_image else None,
             }
         )
 

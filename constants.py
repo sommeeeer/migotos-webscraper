@@ -1,6 +1,6 @@
-CAT_IMAGES_PATH = "/home/lillemagga/Koding/git/migotos/newsite/public/static/images"
+CAT_IMAGES_PATH = "/home/lillemagga/Koding/git/migotos/oldsite/public/static/images"
 LITTER_IMAGES_PATH = (
-    "/home/lillemagga/Koding/git/migotos/newsite/public/static/images/litterpics"
+    "/home/lillemagga/Koding/git/migotos/oldsite/public/static/images/litterpics"
 )
 UNUSED_PATH = "/home/lillemagga/Koding/git/migotos/files/unused"
 
