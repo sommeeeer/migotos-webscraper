@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from constants import LITTER_IMAGES_PATH
-from helpers import parse_date
+from helpers import parse_date, simulate_scroll
 from models import (
     Litter,
     LitterPictureWeek,
@@ -34,19 +34,7 @@ def get_litter_pictures(url):
 
     driver.get(url)
 
-    SCROLL_PAUSE_TIME = 1
-    i = 0
-    last_height = driver.execute_script("return document.body.scrollHeight")
-    while True:
-        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-        time.sleep(SCROLL_PAUSE_TIME)
-        new_height = driver.execute_script("return document.body.scrollHeight")
-        if new_height == last_height:
-            break
-        last_height = new_height
-        i += 1
-        if i == 5:
-            break
+    simulate_scroll(driver)
 
     driver.implicitly_wait(10)
 
