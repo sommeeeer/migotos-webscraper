@@ -1,7 +1,7 @@
 import requests
 
 from bs4 import BeautifulSoup
-from constants import OUR_CATS, PREV_LITTERS
+from constants import BLOG_URL, OUR_CATS, PREV_LITTERS
 
 
 def get_cat_urls():
@@ -49,3 +49,47 @@ def get_litter_urls():
             if url not in litter_posts:
                 litter_posts.append(url)
     return litter_posts
+
+
+# def get_blog_urls():
+#     all_blog_columns = []
+#     response = requests.get(BLOG_URL)
+#     soup = BeautifulSoup(response.text, "html.parser")
+#     next_page = soup.find('span', class_='next')
+#     all_blog_columns
+
+# def get_blog_posts_from_url(url):
+#     response = requests.get(url)
+#     soup = BeautifulSoup(response.text, "html.parser")
+
+#     posts = soup.find_all("a", class_="link-overlay")
+
+#     return posts
+
+
+def get_blog_posts_in_column(soup):
+    posts = soup.find_all("a", class_="link-overlay")
+    return posts
+
+
+def get_blog_urls():
+    all_blog_columns = [BLOG_URL]
+    all_blog_urls = []
+
+    response = requests.get(BLOG_URL)
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    all_blog_urls.extend(get_blog_posts_in_column(soup))
+    next_page = soup.find("span", class_="next").a["href"]
+
+    while next_page is not None:
+        all_blog_columns.append(next_page)
+        response = requests.get(next_page)
+        soup = BeautifulSoup(response.text, "html.parser")
+        all_blog_urls.extend(get_blog_posts_in_column(soup))
+        try:
+            next_page = soup.find("span", class_="next").a["href"]
+        except TypeError:
+            print(f"nextpage is none: ", next_page)
+            break
+    return [a["href"] for a in all_blog_urls]

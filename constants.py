@@ -8,3 +8,4 @@ OUR_CATS = "https://www.migotos.com/our-cats/"
 PREV_LITTERS = "https://www.migotos.com/previous-litters/"
 
 CHROMEDRIVER_PATH = "/usr/bin/chromedriver"
+BLOG_URL = "https://www.migotos.com/blog-columns/"
