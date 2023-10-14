@@ -66,7 +66,7 @@ class Litter(Base):
     )
     slug = Column(String)
     post_image = Column(String)
-    tags = relationship("Tag", back_populates="Litter")
+    tags = relationship("Tag", back_populates="litter")
 
 
 class LitterPictureWeek(Base):
@@ -111,11 +111,11 @@ class BlogPost(Base):
     title = Column(String, nullable=False)
     body = Column(String, nullable=False)
     image_url = Column(String, nullable=False)
-    tags = relationship("BlogTag", back_populates="BlogPost")
+    tags = relationship("BlogPostTag", back_populates="blog_post")
 
 
-class BlogTag(Base):
-    __tablename__ = "BlogTag"
+class BlogPostTag(Base):
+    __tablename__ = "BlogPostTag"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     value = Column(String, nullable=False)
