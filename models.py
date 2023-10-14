@@ -14,6 +14,7 @@ class CatImage(Base):
     width = Column(Integer, nullable=False)
     height = Column(Integer, nullable=False)
     cat = relationship("Cat", back_populates="images")
+    blururl = Column(String, nullable=False)
 
 
 class Cat(Base):
@@ -92,6 +93,7 @@ class KittenPictureImage(Base):
     src = Column(String, nullable=False)
     width = Column(Integer, nullable=False)
     height = Column(Integer, nullable=False)
+    blururl = Column(String, nullable=False)
 
 
 class Tag(Base):
