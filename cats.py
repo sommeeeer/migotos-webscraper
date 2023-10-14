@@ -4,7 +4,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium.webdriver.common.by import By
 from constants import CAT_IMAGES_PATH, OUR_CATS
-from helpers import convert_birth_into_datetime, simulate_scroll
+from helpers import convert_birth_into_datetime, get_base64, simulate_scroll
 from models import Cat, CatImage
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -31,7 +31,11 @@ def get_catimages_from_url(url):
         width, height = Image.open(
             os.path.join(CAT_IMAGES_PATH, img_src.split("/")[-1])
         ).size
-        imgs.append(CatImage(src=img_src, width=width, height=height))
+        imgs.append(
+            CatImage(
+                src=img_src, width=width, height=height, blururl=get_base64(img_src)
+            )
+        )
 
     driver.quit()
     return imgs

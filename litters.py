@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 from constants import LITTER_IMAGES_PATH
-from helpers import parse_date, simulate_scroll
+from helpers import get_base64, parse_date, simulate_scroll
 from models import (
     Litter,
     LitterPictureWeek,
@@ -138,6 +138,7 @@ def get_litter_from_url(url, post_image):
             new_image.src = d["src"]
             new_image.width = 0
             new_image.height = 0
+            new_image.blururl = get_base64(d["src"])
             # try:
             #     new_image.width, new_image.height = Image.open(
             #         os.path.join(LITTER_IMAGES_PATH, d["src"].split("/")[-1])
