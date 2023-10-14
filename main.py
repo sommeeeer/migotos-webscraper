@@ -15,7 +15,7 @@ DATABASE_URL = os.getenv("DATABASE_URL")
 print(DATABASE_URL)
 
 special_print(f"Connecting to database at {DATABASE_URL}")
-engine = create_engine(f"sqlite:///{DATABASE_URL}", echo=False)
+engine = create_engine(DATABASE_URL, echo=False)
 special_print(f"Creating tables in database...")
 Base.metadata.create_all(engine)
 
