@@ -50,23 +50,6 @@ def get_litter_urls():
                 litter_posts.append(url)
     return litter_posts
 
-
-# def get_blog_urls():
-#     all_blog_columns = []
-#     response = requests.get(BLOG_URL)
-#     soup = BeautifulSoup(response.text, "html.parser")
-#     next_page = soup.find('span', class_='next')
-#     all_blog_columns
-
-# def get_blog_posts_from_url(url):
-#     response = requests.get(url)
-#     soup = BeautifulSoup(response.text, "html.parser")
-
-#     posts = soup.find_all("a", class_="link-overlay")
-
-#     return posts
-
-
 def get_blog_posts_in_column(soup):
     posts = soup.find_all("a", class_="link-overlay")
     return posts
@@ -90,6 +73,5 @@ def get_blog_urls():
         try:
             next_page = soup.find("span", class_="next").a["href"]
         except TypeError:
-            print(f"nextpage is none: ", next_page)
             break
     return [a["href"] for a in all_blog_urls]

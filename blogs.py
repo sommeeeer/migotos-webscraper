@@ -4,9 +4,9 @@ import requests
 from models import BlogPost, BlogPostTag
 
 
-def get_post_from_url(url):
+def get_blogpost_from_url(url):
     response = requests.get(
-        "https://www.migotos.com/gic-nmigotos-kaia-n-03-22-bis-female-both-days-16-17-july-2023/"
+        url
     )
     soup = BeautifulSoup(response.text, "html.parser")
 
