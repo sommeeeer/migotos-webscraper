@@ -1,4 +1,5 @@
 import re
+import subprocess
 import time
 
 from datetime import datetime
@@ -43,3 +44,10 @@ def parse_date(date):
 
 def special_print(text):
     print(f"[*] - {text}")
+
+
+def get_base64(url):
+    result = subprocess.run(
+        ["node", "get_base64.mjs", url], stdout=subprocess.PIPE, text=True)
+    return result.stdout
+

@@ -1,0 +1,14 @@
+{
+  "name": "nodescript",
+  "version": "1.0.0",
+  "description": "A python scraper to scrape my mothers cat breeding site that is located at https://www.migotos.com",
+  "main": "get_base64.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "plaiceholder": "^3.0.0"
+  }
+}
